@@ -8,24 +8,36 @@
 //------------------------------------------------------------------------------
 public static class ComponentIds {
 
-    public const int Button = 0;
-    public const int GameObject = 1;
-    public const int HumorsBar = 2;
-    public const int Position = 3;
+    public const int Blood = 0;
+    public const int Button = 1;
+    public const int Event = 2;
+    public const int GameObject = 3;
+    public const int HumorsBar = 4;
+    public const int NewPatient = 5;
+    public const int Patient = 6;
+    public const int Position = 7;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 8;
 
     public static readonly string[] componentNames = {
+        "Blood",
         "Button",
+        "Event",
         "GameObject",
         "HumorsBar",
+        "NewPatient",
+        "Patient",
         "Position"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(BloodComponent),
         typeof(ButtonComponent),
+        typeof(EventComponent),
         typeof(GameObjectComponent),
         typeof(HumorsBarComponent),
+        typeof(NewPatientComponent),
+        typeof(PatientComponent),
         typeof(PositionComponent)
     };
 }

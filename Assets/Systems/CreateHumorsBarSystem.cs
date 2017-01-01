@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class CreateHumorsBarSystem : IInitializeSystem, ISetPool, IReactiveSystem
@@ -32,11 +31,15 @@ public class CreateHumorsBarSystem : IInitializeSystem, ISetPool, IReactiveSyste
             if (!e.hasGameObject)
             {
                 GameObject go = UnityEngine.GameObject.Instantiate<GameObject>(Resources.Load(e.humorsBar.prefabName) as GameObject);
+                go.GetComponent<Scrollbar>().interactable = false;
                 ColorBlock ScrollbarColorBlock = go.GetComponent<Scrollbar>().colors;
+                ScrollbarColorBlock.disabledColor = e.humorsBar.barColour;
                 ScrollbarColorBlock.normalColor = e.humorsBar.barColour;
-                go.GetComponent<Scrollbar>().colors = ScrollbarColorBlock;
+                ScrollbarColorBlock.highlightedColor = e.humorsBar.barColour;
 
+                go.GetComponent<Scrollbar>().colors = ScrollbarColorBlock;
                 go.GetComponentInChildren<Text>().text = e.humorsBar.name;
+                
 
                 go.transform.SetParent(GameObject.Find("Canvas").transform, false);
                 go.transform.localPosition = new Vector3(e.position.x, e.position.y, e.position.z);
@@ -44,8 +47,6 @@ public class CreateHumorsBarSystem : IInitializeSystem, ISetPool, IReactiveSyste
             }
         }
     }
-
-    
 
     public void SetPool(Pool pool)
     {

@@ -27,6 +27,10 @@ public class SystemLoad : MonoBehaviour
         return new Feature("Systems")
             .Add(pool.CreateSystem(new CreateButtonSystem()))
             .Add(pool.CreateSystem(new CreateHumorsBarSystem()))
+            .Add(pool.CreateSystem(new PatientSystem()))
+            .Add(pool.CreateSystem(new NewPatientSystem()))
+            .Add(pool.CreateSystem(new BleedSystem()))
+            .Add(pool.CreateSystem(new ResetBarSystem()))
             ;
     }
 }

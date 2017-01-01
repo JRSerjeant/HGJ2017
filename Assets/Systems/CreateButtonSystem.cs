@@ -10,12 +10,13 @@ public class CreateButtonSystem : IInitializeSystem, ISetPool, IReactiveSystem
 
     public void Initialize()
     {
-        _pool.CreateEntity().AddButton("pfb_Button","Bleed").AddPosition(-160,-50,0);
+        _pool.CreateEntity().AddButton("pfb_Button","Bleed").AddPosition(-160,-50,0).IsBlood(true);
         _pool.CreateEntity().AddButton("pfb_Button", "Vomit").AddPosition(0, -50, 0);
         _pool.CreateEntity().AddButton("pfb_Button", "Blistering ").AddPosition(160, -50, 0);
         _pool.CreateEntity().AddButton("pfb_Button", "TBC").AddPosition(-160, -90, 0);
         _pool.CreateEntity().AddButton("pfb_Button", "TBC").AddPosition(0, -90, 0);
         _pool.CreateEntity().AddButton("pfb_Button", "TBC").AddPosition(160, -90, 0);
+        _pool.CreateEntity().AddButton("pfb_Button", "New Patient").AddPosition(240, 0, 0);
     }
 
     public TriggerOnEvent trigger
@@ -36,6 +37,7 @@ public class CreateButtonSystem : IInitializeSystem, ISetPool, IReactiveSystem
                 go.GetComponentInChildren<Text>().text = e.button.buttonText;
                 go.transform.SetParent(GameObject.Find("Canvas").transform, false);
                 go.transform.localPosition = new Vector3(e.position.x, e.position.y, e.position.z);
+                go.name = e.button.buttonText;
                 e.AddGameObject(go);
             }
         }
