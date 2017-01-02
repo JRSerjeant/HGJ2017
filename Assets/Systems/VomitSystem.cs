@@ -4,28 +4,28 @@ using UnityEngine;
 using Entitas;
 using UnityEngine.UI;
 
-public class BleedSystem : IExecuteSystem, IInitializeSystem, ISetPool
+public class VomitSystem : IExecuteSystem, IInitializeSystem, ISetPool
 {
     Pool _pool;
-    Group _bloodBarGroup;
-    Group _bleedButtons;
+    Group _phlegmBarGroup;
+    Group _phlegmButtons;
     public void Initialize()
     {
-        _bleedButtons = _pool.GetGroup(Matcher.Blood);
-        _bloodBarGroup = _pool.GetGroup(Matcher.HumorsBar);
+        _phlegmButtons = _pool.GetGroup(Matcher.Phlegm);
+        _phlegmBarGroup = _pool.GetGroup(Matcher.HumorsBar);
 
         
     }
 
     public void Execute()
     {
-        foreach (var e in _bleedButtons.GetEntities())
+        foreach (var e in _phlegmButtons.GetEntities())
         {
-            if (e.button.buttonText == "Bleed")
+            if (e.button.buttonText == "Vomit")
             {
                 if (!e.isEvent)
                 {
-                    e.gameObject.gameObject.GetComponent<Button>().onClick.AddListener(reduceBlood);
+                    e.gameObject.gameObject.GetComponent<Button>().onClick.AddListener(reducePhlegm);
                     e.isEvent = true;
                 }
             }
@@ -37,11 +37,12 @@ public class BleedSystem : IExecuteSystem, IInitializeSystem, ISetPool
         _pool = pool;
     }
 
-    void reduceBlood()
+    void reducePhlegm()
     {
-        foreach (var e in _bloodBarGroup.GetEntities())
+        foreach (var e in _phlegmBarGroup.GetEntities())
         {
-            if (e.humorsBar.name == "Blood")
+
+            if (e.humorsBar.name == "Phlegm")
             {
                 e.gameObject.gameObject.GetComponent<Scrollbar>().size -= 0.10f;
 

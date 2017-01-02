@@ -10,13 +10,13 @@ public class CreateButtonSystem : IInitializeSystem, ISetPool, IReactiveSystem
 
     public void Initialize()
     {
-        _pool.CreateEntity().AddButton("pfb_Button","Bleed").AddPosition(-160,-50,0).IsBlood(true);
-        _pool.CreateEntity().AddButton("pfb_Button", "Vomit").AddPosition(0, -50, 0);
-        _pool.CreateEntity().AddButton("pfb_Button", "Blistering ").AddPosition(160, -50, 0);
-        _pool.CreateEntity().AddButton("pfb_Button", "TBC").AddPosition(-160, -90, 0);
-        _pool.CreateEntity().AddButton("pfb_Button", "TBC").AddPosition(0, -90, 0);
-        _pool.CreateEntity().AddButton("pfb_Button", "TBC").AddPosition(160, -90, 0);
-        _pool.CreateEntity().AddButton("pfb_Button", "New Patient").AddPosition(240, 0, 0);
+        _pool.CreateEntity().AddButton("pfb_Button","Bleed").AddPosition(-160,-150,0).IsBlood(true);
+        _pool.CreateEntity().AddButton("pfb_Button", "Vomit").AddPosition(0, -150, 0).IsPhlegm(true);
+        _pool.CreateEntity().AddButton("pfb_Button", "Blistering").AddPosition(160, -150, 0).IsBlistering(true);
+        _pool.CreateEntity().AddButton("pfb_Button", "Dry Food").AddPosition(-160, -180, 0).IsDryFood(true);
+        _pool.CreateEntity().AddButton("pfb_Button", "Wet Food").AddPosition(0, -180, 0);
+        _pool.CreateEntity().AddButton("pfb_Button", "Rest").AddPosition(160, -180, 0).IsRest(true);
+        _pool.CreateEntity().AddButton("pfb_Button", "New Patient").AddPosition(240, -100, 0);
     }
 
     public TriggerOnEvent trigger

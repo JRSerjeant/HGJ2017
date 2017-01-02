@@ -11,9 +11,14 @@ public class NewPatientSystem : IExecuteSystem, ISetPool
 
     Button NewPatientButton;
 
+
+
+    bool started;
+
     public void Execute()
     {
-        
+
+
         _group = _pool.GetGroup(Matcher.Button);
 
         foreach (var e in _group.GetEntities())
@@ -22,21 +27,40 @@ public class NewPatientSystem : IExecuteSystem, ISetPool
             {
                 if ( ! e.isEvent)
                 {
-                    e.gameObject.gameObject.GetComponent<Button>().onClick.AddListener(CreateNewPatientEntity);
+                    NewPatientButton = e.gameObject.gameObject.GetComponent<Button>();
+                    e.gameObject.gameObject.GetComponent<Button>().onClick.AddListener(delegate { CreateNewPatientEntity(true); });
                     e.isEvent = true;
+                    if (! started)
+                    {
+                        CreateNewPatientEntity(false);
+                        started = true;
+                        EventSystem._ResetGame += MakeNewPatientButtonInteractable;
+                    }
                 }
             }
         }
     }
+
 
     public void SetPool(Pool pool)
     {
         _pool = pool;
     }
 
-    public void CreateNewPatientEntity()
+    public void CreateNewPatientEntity(bool includeEvent)
     {
         _pool.CreateEntity().IsNewPatient(true);
+        NewPatientButton.interactable = true;
+        GameObject.FindGameObjectWithTag("Cured").GetComponent<Image>().enabled = false;
+        if (includeEvent)
+        {
+            EventSystem.InvokeEventHandlerNewPatientEvent();
+        }
+
     }
 
+    public void MakeNewPatientButtonInteractable()
+    {
+        NewPatientButton.interactable = true;
+    }
 }

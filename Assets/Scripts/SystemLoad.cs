@@ -19,6 +19,7 @@ public class SystemLoad : MonoBehaviour
     void Update()
     {
         _systems.Execute();
+
     }
 
     Systems createSystems(Pool pool)
@@ -30,7 +31,12 @@ public class SystemLoad : MonoBehaviour
             .Add(pool.CreateSystem(new PatientSystem()))
             .Add(pool.CreateSystem(new NewPatientSystem()))
             .Add(pool.CreateSystem(new BleedSystem()))
+            .Add(pool.CreateSystem(new VomitSystem()))
+            .Add(pool.CreateSystem(new BlisteringSystem()))
+            .Add(pool.CreateSystem(new RestSystem()))
+            .Add(pool.CreateSystem(new DryFoodSystem()))
             .Add(pool.CreateSystem(new ResetBarSystem()))
+            .Add(pool.CreateSystem(new ResetGameSystem()))
             ;
     }
 }

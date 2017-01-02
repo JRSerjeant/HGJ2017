@@ -10,11 +10,10 @@ public class CreateHumorsBarSystem : IInitializeSystem, ISetPool, IReactiveSyste
 
     public void Initialize()
     {
-        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Blood", Color.red).AddPosition(0,35,0);
-        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Black Bile", Color.black).AddPosition(0, 15, 0);
-        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Yellow Bile", Color.yellow).AddPosition(0, 55, 0);
-        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Phlegm", Color.blue).AddPosition(0, -5, 0);
-
+        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Blood", Color.red).AddPosition(0,-40,0);
+        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Black Bile", Color.black).AddPosition(0, -60, 0);
+        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Yellow Bile", Color.yellow).AddPosition(0, -80, 0);
+        _pool.CreateEntity().AddHumorsBar("pfb_humorsBar", "Phlegm", Color.blue).AddPosition(0, -100, 0);
     }
     public TriggerOnEvent trigger
     {

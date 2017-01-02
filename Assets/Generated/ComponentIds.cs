@@ -8,36 +8,48 @@
 //------------------------------------------------------------------------------
 public static class ComponentIds {
 
-    public const int Blood = 0;
-    public const int Button = 1;
-    public const int Event = 2;
-    public const int GameObject = 3;
-    public const int HumorsBar = 4;
-    public const int NewPatient = 5;
-    public const int Patient = 6;
-    public const int Position = 7;
+    public const int Blistering = 0;
+    public const int Blood = 1;
+    public const int Button = 2;
+    public const int DryFood = 3;
+    public const int Event = 4;
+    public const int GameObject = 5;
+    public const int HumorsBar = 6;
+    public const int NewPatient = 7;
+    public const int Patient = 8;
+    public const int Phlegm = 9;
+    public const int Position = 10;
+    public const int Rest = 11;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
+        "Blistering",
         "Blood",
         "Button",
+        "DryFood",
         "Event",
         "GameObject",
         "HumorsBar",
         "NewPatient",
         "Patient",
-        "Position"
+        "Phlegm",
+        "Position",
+        "Rest"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(BlisteringComponent),
         typeof(BloodComponent),
         typeof(ButtonComponent),
+        typeof(DryFoodComponent),
         typeof(EventComponent),
         typeof(GameObjectComponent),
         typeof(HumorsBarComponent),
         typeof(NewPatientComponent),
         typeof(PatientComponent),
-        typeof(PositionComponent)
+        typeof(PhlegmComponent),
+        typeof(PositionComponent),
+        typeof(RestComponent)
     };
 }
